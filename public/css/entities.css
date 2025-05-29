@@ -1,0 +1,134 @@
+/* Common styles for products and customers index, create, edit, and pdf views */
+
+body {
+    font-family: Arial, sans-serif;
+    color: #333;
+    background-color: #fff;
+    margin: 0;
+    padding: 0;
+}
+
+.table-container {
+    max-width: 800px;
+    margin: 30px auto;
+    background-color: #1f2937;
+    color: #f9fafb;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    border: 1px solid #374151;
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background-color: #111827;
+}
+
+tr:hover {
+    background-color: #374151;
+}
+
+a.btn, button.btn {
+    padding: 6px 12px;
+    background-color: #2563eb;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    margin: 2px;
+    display: inline-block;
+    border: none;
+    cursor: pointer;
+}
+
+.create-button {
+    padding: 6px 12px;
+    background-color: #4CBB17;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    margin: 2px;
+    display: inline-block;
+    border: none;
+    cursor: pointer;
+}
+
+a.btn:hover, button.btn:hover {
+    background-color: #1e40af;
+}
+
+button.btn.delete {
+    background-color: #dc2626;
+}
+
+button.btn.delete:hover {
+    background-color: #991b1b;
+}
+
+.top-actions {
+    text-align: right;
+    margin-bottom: 10px;
+}
+
+input[name="search"] {
+    min-width: 300px;
+    width: 100%;
+    max-width: 400px;
+}
+
+.form-group-wrapper {
+    margin-bottom: 20px;
+}
+
+.form-input, .form-select {
+    border-radius: 4px;
+    padding: 8px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.form-input:focus, .form-select:focus {
+    border-color: #2563eb;
+    outline: none;
+}
+
+.form-error {
+    color: #dc2626;
+    font-size: 0.875rem;
+    margin-top: 4px;
+}
+
+/* PDF specific styles */
+.pdf-container {
+    font-family: DejaVu Sans, sans-serif;
+    color: #333;
+    padding: 20px;
+}
+
+.pdf-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.pdf-table th, .pdf-table td {
+    border: 1px solid #000;
+    padding: 8px;
+    text-align: left;
+}
+
+.pdf-table th {
+    background-color: #f0f0f0;
+    font-weight: bold;
+}
+
+.table-container-wide {
+    max-width: 1030px;
+}
