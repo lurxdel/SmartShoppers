@@ -19,12 +19,12 @@
             <form method="GET" action="{{ route('customers.index') }}" class="flex gap-4">
                 <input type="text" name="search" placeholder="Search customer name or address..." value="{{ request('search') }}"
                     class="border border-gray-300 rounded px-4 py-2 dark:bg-gray-700 dark:text-white">
-                <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700" style="background-color: #007bff;">Search</button>
+                <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700" style="background-color: #b2b81d;">Search</button>
             </form>
             
             <a href="{{ route('customers.pdf', ['search' => request('search')]) }}"
                 class="ml-4 px-4 py-2 bg-purple-600 text-white rounded hover:bg-purple-700"
-                style="background-color: #007bff;" target="_blank">
+                style="background-color: #b2b81d;" target="_blank">
                 View PDF
             </a>
         </div>

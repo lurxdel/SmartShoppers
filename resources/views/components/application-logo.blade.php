@@ -1,1 +1,1 @@
-<img src="{{ asset('images/logo.png') }}" alt="Shopping System Logo" class="w-16 h-20">
+<img src="{{ asset('images/logo.jpg') }}" alt="Shopping System Logo" class="w-16 h-20">

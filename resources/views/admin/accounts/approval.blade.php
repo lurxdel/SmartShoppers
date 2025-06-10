@@ -41,7 +41,7 @@
                                     <option value="user">User</option>
                                 </select>
                                 <button type="submit" class="mt-2 px-4 py-2 bg-purple-600 text-white rounded hover:bg-purple-700"
-                            style="background-color: #007bff;">Approve</button>
+                            style="background-color: #b2b81d;">Approve</button>
                             </form>
                         </td>
                     </tr>

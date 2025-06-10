@@ -15,7 +15,7 @@
     <style>
         body {
             font-family: 'Figtree', sans-serif;
-            background-color: #f3f0f0;
+            background-color: #40021b;
             margin: 0;
             padding: 0;
             color: #333;
@@ -28,7 +28,7 @@
             justify-content: center;
             align-items: center;
             padding-top: 2rem;
-            background-color: #101826; 
+            background-color: #40021b; 
         }
 
         .logo {
@@ -36,7 +36,7 @@
         }
 
         .card {
-            background-color: #1f2937;
+            background-color: #770434;
             border-radius: 1rem;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
             width: 100%;
@@ -45,7 +45,7 @@
         }
 
         .card.dark {
-            background-color: #2d2d2d;
+            background-color: #770434;
             color: #f0f0f0;
         }
 

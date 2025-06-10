@@ -17,11 +17,11 @@
                 <input type="text" name="search" value="{{ request('search') }}" placeholder="Search product or customer name" 
                 class="border border-gray-300 rounded px-4 py-2 dark:bg-gray-700 dark:text-white">
                 <button type="submit" class="ml-4 px-4 py-2 bg-purple-600 text-white rounded hover:bg-purple-700"
-                    style="background-color: #007bff;">Search</button>
+                    style="background-color: #b2b81d;">Search</button>
             </form>
                 <a href="{{ route('purchases.pdf', ['product_name' => request('product_name'), 'customer_name' => request('customer_name')]) }}"
                     class="ml-4 px-4 py-2 bg-purple-600 text-white rounded hover:bg-purple-700"
-                    style="background-color: #007bff;" target="_blank">
+                    style="background-color: #b2b81d;" target="_blank">
                     View PDF
                 </a>
             </form>
@@ -67,7 +67,7 @@
                             </select>
 
                             <button type="submit" class="mt-2 px-4 py-2 bg-purple-600 text-white rounded hover:bg-purple-700"
-                            style="background-color: #007bff;">Update</button>
+                            style="background-color: #b2b81d;">Update</button>
                         </form>
                     </td>
                 </tr>

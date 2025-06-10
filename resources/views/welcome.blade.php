@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Welcome - SmartShoppers</title>
+    <title>SmartShoppers</title>
 
     <style>
         body {
@@ -21,7 +21,7 @@
         }
 
         .card {
-            background-color: #1f2937;
+            background-color: #770434;
             border-radius: 20px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
             padding: 40px 30px;
@@ -38,8 +38,8 @@
 
         .card a {
             display: inline-block;
-            background-color: blue;
-            color: white;
+            background-color: white;
+            color: black;
             padding: 10px 25px;
             margin: 10px;
             border: none;
@@ -50,7 +50,7 @@
         }
 
         .card a:hover {
-            background-color: #023cb0;
+            background-color: #e8e6e6;
         }
     </style>
 </head>

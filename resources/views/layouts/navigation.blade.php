@@ -2,7 +2,7 @@
     $role = auth()->user()->role;
 @endphp
 
-<nav x-data="{ open: false }" class="bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700">
+<nav x-data="{ open: false }" style="background-color: #770434;" class="text-white">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
@@ -10,7 +10,7 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
-                        <img src="{{ asset('images/logo.png') }}" alt="Shopping System Logo" class="block object-fit-contain p-1 h-9 w-9">
+                        <img src="{{ asset('images/logo.jpg') }}" alt="Shopping System Logo" class="block object-fit-contain p-1 h-9 w-9">
                     </a>
                 </div>
 
@@ -86,7 +86,8 @@
             <div class="hidden sm:flex sm:items-center sm:ms-6">
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
-                        <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
+                        <button style="background-color: #40021b; color: white;"
+                            class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md hover:bg-[#2a0112] focus:outline-none transition ease-in-out duration-150">
                             <div class="shrink-0 flex items-center">
                                 @if(auth()->user()->avatar)
                                     <img src="{{ asset('storage/' . auth()->user()->avatar) }}" alt="Avatar" class="h-6 w-6 rounded-full">
