@@ -21,6 +21,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',         
+        'is_approved',
         'avatar',
     ];
 
@@ -46,4 +48,10 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function purchases()
+    {
+        return $this->hasMany(\App\Models\Purchase::class, 'customer_id');
+    }
+
 }

@@ -21,6 +21,22 @@
                     </x-nav-link>
                 </div>
 
+                @if ($role === 'admin')
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link href="{{ route('accounts.index') }}" :active="request()->routeIs('accounts.*')">
+                        {{ __('Accounts') }}
+                    </x-nav-link>
+                </div>
+                @endif
+
+                @if ($role === 'admin')
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link href="{{ route('accounts.approval') }}" :active="request()->routeIs('accounts.*')">
+                        {{ __('Approval') }}
+                    </x-nav-link>
+                </div>
+                @endif
+
                 @if ($role === 'admin' || $role === 'user')
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link href="{{ route('products.index') }}" :active="request()->routeIs('products.*')">
@@ -29,6 +45,7 @@
                 </div>
                 @endif
 
+                <!--
                 @if ($role === 'admin')
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link href="{{ route('customers.index') }}" :active="request()->routeIs('customers.*')">
@@ -36,14 +53,33 @@
                     </x-nav-link>
                 </div>
                 @endif
+                -->
 
-                @if ($role === 'admin' || $role === 'staff')
+                @if ($role === 'admin')
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link href="{{ route('purchases.index') }}" :active="request()->routeIs('purchases.*')">
-                        {{ __('Purchases') }}
+                        {{ __('Orders') }}
                     </x-nav-link>
                 </div>
                 @endif
+
+                @if (Auth::user()->role === 'user')
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link href="{{ route('customer.purchases') }}" class="text-blue-500 hover:underline">
+                        {{ __('My Orders') }}
+                    </x-nav-link>
+                </div>
+                @endif
+
+                @if (Auth::user()->role === 'staff')
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link href="{{ route('purchases.staff') }}" class="text-blue-500 hover:underline">
+                        {{ __('Orders') }}
+                    </x-nav-link>
+                </div>
+                @endif
+
+                
             </div>
 
             <!-- Settings Dropdown -->
@@ -55,7 +91,7 @@
                                 @if(auth()->user()->avatar)
                                     <img src="{{ asset('storage/' . auth()->user()->avatar) }}" alt="Avatar" class="h-6 w-6 rounded-full">
                                 @else
-                                    <img src="{{ asset('/images/default-avatar.png') }}" alt="Avatar" class="h-6 w-6 rounded-full">
+                                    <img src="{{ asset('/images/default-avatar.jpg') }}" alt="Avatar" class="h-6 w-6 rounded-full">
                                 @endif
                                 <span class="ms-2">{{ Auth::user()->name }}</span>
                             </div>
@@ -106,22 +142,48 @@
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
 
+            @if ($role === 'admin')
+                <x-responsive-nav-link :href="route('accounts.index')" class="text-blue-500 hover:underline">
+                    {{ __('Accounts') }}
+                </x-responsive-nav-link>
+            @endif
+
+            @if ($role === 'admin')
+                <x-responsive-nav-link :href="route('accounts.approval')" class="text-blue-500 hover:underline">
+                    {{ __('Approval') }}
+                </x-responsive-nav-link>
+            @endif
+
             @if ($role === 'admin' || $role === 'user')
                 <x-responsive-nav-link :href="route('products.index')" :active="request()->routeIs('products.*')">
                     {{ __('Products') }}
                 </x-responsive-nav-link>
             @endif
 
+            <!--
             @if ($role === 'admin')
                 <x-responsive-nav-link :href="route('customers.index')" :active="request()->routeIs('customers.*')">
                     {{ __('Customers') }}
                 </x-responsive-nav-link>
             @endif
+            -->
 
-            @if ($role === 'admin' || $role === 'staff')
+            @if ($role === 'admin')
                 <x-responsive-nav-link :href="route('purchases.index')" :active="request()->routeIs('purchases.*')">
-                    {{ __('Purchases') }}
+                    {{ __('Orders') }}
                 </x-responsive-nav-link>
+            @endif
+
+            @if (Auth::user()->role === 'user')
+                    <x-responsive-nav-link href="{{ route('customer.purchases') }}" class="text-blue-500 hover:underline">
+                    {{ __('My Orders') }}
+                    </x-responsive-nav-link>
+            @endif
+
+            @if (Auth::user()->role === 'staff')
+                    <x-responsive-nav-link href="{{ route('purchases.staff') }}" class="text-blue-500 hover:underline">
+                    {{ __('Orders') }}
+                    </x-responsive-nav-link>
             @endif
         </div>
 

@@ -42,6 +42,7 @@
                 <th>Total Price</th>
                 <th>Purchase Date</th>
                 <th>Status</th>
+                <th>Actions</th>
             </tr>
         </thead>
         
@@ -55,6 +56,20 @@
                     <td>₱{{ $purchase->total_price }}</td>
                     <td>{{ $purchase->created_at->format('Y-m-d') }}</td>
                     <td>{{ $purchase->status }}</td>
+                    <td>
+                        <form action="{{ route('purchases.staff.update', $purchase->id) }}" method="POST">
+                            @csrf
+                            @method('PATCH')
+                            <select name="status" class="rounded-md shadow-sm mt-1 dark:bg-gray-700 dark:text-white">
+                                <option value="Pending" {{ $purchase->status === 'Pending' ? 'selected' : '' }}>Pending</option>
+                                <option value="Confirmed" {{ $purchase->status === 'Confirmed' ? 'selected' : '' }}>Confirmed</option>
+                                <option value="On Delivery" {{ $purchase->status === 'On Delivery' ? 'selected' : '' }}>On Delivery</option>
+                            </select>
+
+                            <button type="submit" class="mt-2 px-4 py-2 bg-purple-600 text-white rounded hover:bg-purple-700"
+                            style="background-color: #007bff;">Update</button>
+                        </form>
+                    </td>
                 </tr>
             @empty
                 <tr>

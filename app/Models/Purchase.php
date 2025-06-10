@@ -2,23 +2,32 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Purchase extends Model
 {
-    use HasFactory;
-
     protected $fillable = [
-        'customer_id',
         'product_id',
-        'quantity',
+        'customer_id',
         'user_id',
+        'quantity',
+        'status',
+        'total_price',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function getTotalPriceAttribute()
+    {
+        return $this->quantity * $this->product->price;
+    }
 
     public function customer()
     {
-        return $this->belongsTo(Customer::class);
+        return $this->belongsTo(User::class, 'customer_id');
     }
 
     public function product()
@@ -26,8 +35,9 @@ class Purchase extends Model
         return $this->belongsTo(Product::class);
     }
 
-    public function user()
+    public function staff()
     {
-        return $this->belongsTo(\App\Models\User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
+
 }

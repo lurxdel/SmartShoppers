@@ -67,15 +67,9 @@ class ProductController extends Controller
         return redirect()->route('products.index')->with('success', 'Product deleted successfully.');
     }
 
-    public function exportPDF(Request $request)
+    public function generatePdf()
     {
-        $products = Product::query()
-            ->when($request->search, function ($query, $search) {
-                return $query->where('name', 'like', "%{$search}%")
-                             ->orWhere('category', 'like', "%{$search}%");
-            })
-            ->get();
-
+        $products = Product::all();
         $pdf = Pdf::loadView('products.pdf', compact('products'));
 
         return $pdf->stream('products.pdf');

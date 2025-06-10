@@ -5,6 +5,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\PurchaseController;
+use App\Http\Controllers\AdminApprovalController;
 use Illuminate\Support\Facades\Auth;
 
 // =============================
@@ -55,21 +56,28 @@ Route::middleware(['auth'])->group(function () {
     // =============================
     // Admin Role Routes
     // =============================
-    
     Route::group(['middleware' => ['auth', 'role:admin']], function () {
-        Route::resource('products', ProductController::class)->only(['create', 'edit', 'index']);
+        Route::get('/accounts', [ProfileController::class, 'accounts'])->name('accounts.index');
+        Route::delete('/accounts/{user}', [ProfileController::class, 'destroyUser'])->name('accounts.destroy');
+
+        Route::resource('products', ProductController::class)->only(['create', 'edit', 'index', 'store', 'update', 'destroy']);
         Route::resource('customers', CustomerController::class);
-        Route::resource('purchases', PurchaseController::class)->only(['index']);
+        Route::resource('purchases', PurchaseController::class)->only(['index', 'store']);
+        
         Route::get('purchases/pdf', [PurchaseController::class, 'generatePdf'])->name('purchases.pdf');
         Route::get('customers/pdf', [CustomerController::class, 'generatePdf'])->name('customers.pdf');
-        Route::get('products/pdf', [ProductsController::class, 'generatePdf'])->name('products.pdf');
+        Route::get('products/pdf', [ProductController::class, 'generatePdf'])->name('products.pdf');
+
+        Route::get('/accounts/approval', [ProfileController::class, 'approval'])->name('accounts.approval');
+        Route::post('/accounts/approval/{user}', [ProfileController::class, 'approveUser'])->name('accounts.approve');
     });
 
     // =============================
     // Staff Role Routes
     // =============================
-    Route::group(['middleware' => ['auth', 'role:admin,staff']], function () {
-        Route::resource('purchases', PurchaseController::class)->only(['index']);
+    Route::group(['middleware' => ['auth', 'role:staff']], function () {
+        Route::get('/purchases/staff', [PurchaseController::class, 'staffView'])->name('purchases.staff');
+        Route::patch('/purchases/staff/update/{id}', [PurchaseController::class, 'staffUpdate'])->name('purchases.staff.update');
         Route::get('purchases/pdf', [PurchaseController::class, 'generatePdf'])->name('purchases.pdf');
     });
 
@@ -77,8 +85,12 @@ Route::middleware(['auth'])->group(function () {
     // User Role Routes
     // =============================
     Route::group(['middleware' => ['auth', 'role:admin,user']], function () {
-        Route::resource('products', ProductController::class)->only(['index']);
+        Route::resource('products', ProductController::class)->only(['index', 'store']);
+
+        // ✅ Allow users to store purchases
+        Route::post('/purchases', [PurchaseController::class, 'store'])->name('purchases.store');
+        Route::get('/customer/purchases', [PurchaseController::class, 'customerView'])->name('customer.purchases');
         Route::get('products/pdf', [ProductController::class, 'generatePdf'])->name('products.pdf');
     });
-
+    
 });

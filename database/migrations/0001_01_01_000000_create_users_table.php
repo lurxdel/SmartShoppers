@@ -20,6 +20,8 @@ return new class extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+            $table->string('status')->default('pending');
+            $table->boolean('is_approved')->default(false);
             $table->string('role')->default('user');
         });
 

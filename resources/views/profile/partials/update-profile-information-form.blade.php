@@ -21,7 +21,7 @@
             <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">{{ __('Current Profile:') }}</p>
             <img src="{{ $user->avatar 
                     ? asset('storage/' . $user->avatar)
-                    : asset('images/default-avatar.png') }}"
+                    : asset('images/default-avatar.jpg') }}"
                     alt="User Profile"
                     class="h-20 w-20 rounded-full object-cover border border-gray-300 dark:border-gray-700">
         </div>

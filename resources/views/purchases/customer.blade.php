@@ -13,17 +13,21 @@
 
     <div class="form-group-wrapper">
         <div class="flex flex-wrap items-center gap-4 mb-4">
-            <form method="GET" action="{{ route('purchases.index') }}" class="flex gap-4 items-center">
-                <input type="text" name="search" value="{{ request('search') }}" placeholder="Search product or customer name" 
-                class="border border-gray-300 rounded px-4 py-2 dark:bg-gray-700 dark:text-white">
-                <button type="submit" class="ml-4 px-4 py-2 bg-purple-600 text-white rounded hover:bg-purple-700"
-                    style="background-color: #007bff;">Search</button>
-            </form>
-                <a href="{{ route('purchases.pdf', ['product_name' => request('product_name'), 'customer_name' => request('customer_name')]) }}"
-                    class="ml-4 px-4 py-2 bg-purple-600 text-white rounded hover:bg-purple-700"
-                    style="background-color: #007bff;" target="_blank">
-                    View PDF
-                </a>
+            <form action="{{ route('purchases.store') }}" method="POST" class="purchase-form">
+                @csrf
+                <label for="product_id">Product:</label>
+                <select name="product_id" id="product_id" class="rounded-md shadow-sm mt-1 dark:bg-gray-700 dark:text-white" required>
+                    <option value="">Select Product</option>
+                    @foreach($products as $id => $name)
+                        <option value="{{ $id }}">{{ $name }}</option>
+                    @endforeach
+                </select>
+
+                <label for="quantity">Quantity:</label>
+                <input type="number" name="quantity" id="quantity" class="rounded-md shadow-sm mt-1 dark:bg-gray-700 dark:text-white" value="1" min="1" required>
+
+                <button type="submit" class="create-button">Save Purchase</button>
+
             </form>
         </div>
     </div>
@@ -58,7 +62,7 @@
                 </tr>
             @empty
                 <tr>
-                    <td colspan="8">No purchases found.</td>
+                    <td colspan="7">No purchases found.</td>
                 </tr>
             @endforelse
         </tbody>

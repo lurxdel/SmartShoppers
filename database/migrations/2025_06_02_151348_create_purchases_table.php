@@ -13,23 +13,38 @@ return new class extends Migration
     {
         Schema::create('purchases', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('customer_id');
+            $table->unsignedBigInteger('staff_id')->nullable();
             $table->unsignedBigInteger('product_id');
-            $table->Integer('quantity')->default(1);
+            $table->integer('quantity')->default(1);
+            $table->decimal('total_price', 8, 2);
+            $table->string('status')->default('Pending');
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
 
-            $table->foreign('user_id')
+            $table->foreign('staff_id')
+                ->references('id')
+                ->on('users')
+                ->onUpdate('cascade')
+                ->onDelete('set null');
+
+            $table->foreign('customer_id')
                 ->references('id')->on('users')
                 ->onUpdate('cascade')
-                ->onDelete('restrict');
+                ->onDelete('cascade');
 
             $table->foreign('product_id')
                 ->references('id')->on('products')
                 ->onUpdate('cascade')
                 ->onDelete('restrict');
 
+            $table->foreign('user_id')
+                ->references('id')->on('users')
+                ->onUpdate('cascade')
+                ->onDelete('restrict');
         });
     }
+
 
     /**
      * Reverse the migrations.

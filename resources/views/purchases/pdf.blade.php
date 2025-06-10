@@ -7,21 +7,26 @@
 </head>
 <body>
     <div class="pdf-container">
-        <h1>Purchases Records</h1>
-        <p><b>Filtered by:</b>
-            @if(!empty($filters['product_name']))
-                Product: {{ $filters['product_name'] }}
-            @endif
-            @if(!empty($filters['customer_name']))
-                @if(!empty($filters['product_name']))
-                    , 
-                @endif
-                Customer: {{ $filters['customer_name'] }}
-            @endif
-            @if(empty($filters['product_name']) && empty($filters['customer_name']))
-                None
-            @endif
-        </p>
+        <h3>Employee Details</h3>
+        <div class="profile">
+        @php
+            $avatarPath = Auth::user()->avatar 
+                ? public_path('storage/' . Auth::user()->avatar)
+                : public_path('images/default-avatar.jpg');
+            $avatarData = base64_encode(file_get_contents($avatarPath));
+            $avatarMime = mime_content_type($avatarPath);
+            $avatarSrc = 'data:' . $avatarMime . ';base64,' . $avatarData;
+        @endphp
+        <img src="{{ $avatarSrc }}"
+            alt="User Profile"
+            style="width: 100px; height: 100px; border-radius: 50%; margin-right: 15px; border: 1px solid #ccc;">
+            <div>
+                <strong>{{ Auth::user()->name }}</strong><br>
+                <small>{{ Auth::user()->email }}</small>
+            </div>
+        </div>
+        <h3>Customer Purchase</h3>
+        <p><b>Filtered by:</b> {{ $filters['search'] ?? 'None' }}</p>
         <table class="pdf-table">
             <thead>
                 <tr>
@@ -29,8 +34,8 @@
                     <th>Customer Name</th>
                     <th>Product</th>
                     <th>Quantity</th>
+                    <th>Total Price</th>
                     <th>Purchase Date</th>
-                    <th>Staff</th>
                 </tr>
             </thead>
             <tbody>
@@ -40,10 +45,8 @@
                     <td>{{ $purchase->customer->name }}</td>
                     <td>{{ $purchase->product->name }}</td>
                     <td>{{ $purchase->quantity }}</td>
+                    <td>₱{{ $purchase->total_price }}</td>
                     <td>{{ $purchase->created_at->format('Y-m-d') }}</td>
-                    <td>
-                        {{ $purchase->user->name ?? 'N/A' }}
-                    </td>
                 </tr>
                 @endforeach
             </tbody>
