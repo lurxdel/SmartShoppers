@@ -70,7 +70,7 @@ To run the system locally, do the following.
     php artisan db:seed
    ```
 
-> **Note:** This will create datas on your database with default role accounts:
+> **Note:** This will create user datas on your database with default role accounts:
 >   
 >  | Role  | Email             | Password  |
 >  |-------|-------------------|-----------|
