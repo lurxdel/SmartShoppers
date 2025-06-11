@@ -41,7 +41,7 @@ To run the system locally, do the following.
     php artisan key:generate
     ```
 
-2. Change the DATABASE in `.env` file to your own created database.
+2. Change the DB_DATABASE in `.env` file to your own created database.
 
 3. After that, do these commands:
    - In your terminal:
