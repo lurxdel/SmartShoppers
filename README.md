@@ -20,8 +20,8 @@ A simple shopping system using **Laravel Blade Breeze.**
    - Login Approval (Admin)
 3. **Pagination and Search Modules**
 4. **PDF**
-   - Individual report (filtered)
-   - All report
+   - Individual Report (Filtered)
+   - All Report
 5. **Restriction Level**
    - Admin View
    - Staff View
