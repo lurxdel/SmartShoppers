@@ -15,57 +15,68 @@ A simple shopping system using **Laravel Blade Breeze.**
   <img src="https://github.com/user-attachments/assets/bd38e463-ad6c-4150-84a4-a91ce6000cfc" width="200">
 </p>
 
-## Features  
+## Features
 
-1. **CRUD**
-   - **Tables**
-     - 2 Masters Table
-     - 1 Transaction Table
-2. **Login (BLADE)**
-   - Login Approval (Admin)
-3. **Pagination and Search Modules**
-4. **PDF**
-   - Individual Report (Filtered)
-   - All Report
-5. **Restriction Level**
-   - Admin View
-   - Staff View
-   - User View
-6. **Simple UI**
+- **Authentication (Blade Breeze)**
+  - Needs admin approval before logging in
+  - **Role-based login:** Admin, Staff, User
+ 
+- **Access Control**
+  - **Admin View:** Full access and approval rights
+  - **Staff View:** Partial access, update order status
+  - **User View:** Purchase and view own orders
+ 
+- **CRUD Functionality**
+  - 2 Master Tables `(e.g., Products, Users)`
+  - 1 Transaction Table `(e.g., Purchases)`
+    
+- **Search and Pagination**
+  - Integrated search bar with paginated results
+    
+- **PDF Generation**
+  - Export all data reports
+  - Export `filtered` individual reports
+    
+- **UI Design**
+  - Minimal, clean, and intuitive interface
  
 ## Guide To Run
 To run the system locally, do the following.
 > - **Clone this repository** or download it as a **ZIP file.**
-> - When cloning the repository, run these commands.
+> - When cloning the repository, follow these commands.
 
-1. First, do the following commands:
-   > In your terminal:
-    ```bash
+1. Install PHP dependencies, do this commands in terminal:
+   ```bash
     composer install
     cp .env.example .env
     php artisan key:generate
-    ```
+   ```
 
-2. Change the DB_DATABASE in `.env` file to your own created database.
+3. Set the `.env` file to your own database configuration.
+   ```bash
+   DB_DATABASE=your_database_name //SET YOUR OWN DATABASE
+   ```
 
-3. After that, do these commands:
-   > In your terminal:
-    ```bash
+4. Run migrations and build frontend, do this commands in terminal:
+   ```bash
     php artisan migrate
     npm install
     npm run build
-    ```
+   ```
 
-4. To access the system, do the following commands.
-   > In your terminal:
-    ```bash
+6. Link storage and seed the database, do this commands in terminal:
+   ```bash
     php artisan storage:link
     php artisan db:seed
-    ```
-> - **Note:** This will create a user data with roles in your database, to login use this.
->    - **ADMIN:** admin@email.com 12345678
->    - **STAFF:** staff@email.com 12345678
->    - **USER:** user@email.com 12345678
+   ```
+
+> **Note:** This will create datas on your database with default role accounts:
+>   
+>  | Role  | Email             | Password  |
+>  |-------|-------------------|-----------|
+>  | Admin | admin@email.com   | 12345678  |
+>  | Staff | staff@email.com   | 12345678  |
+>  | User  | user@email.com    | 12345678  |
 
 ### Acknowledgment  
 We are grateful to our instructors for their guidance and support throughout the development of this project. This work reflects our learning journey and the collaborative efforts of the team.  
