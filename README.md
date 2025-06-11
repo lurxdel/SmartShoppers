@@ -31,10 +31,10 @@ A simple shopping system using **Laravel Blade Breeze.**
 ## Guide To Run
 To run the system locally, do the following.
 > - **Clone this repository** or download it as a **ZIP file.**
-> - When Cloning the repository, run these commands.
+> - When cloning the repository, run these commands.
 
 1. First, do the following commands:
-   - In your terminal:
+   > In your terminal:
     ```bash
     composer install
     cp .env.example .env
@@ -44,7 +44,7 @@ To run the system locally, do the following.
 2. Change the DB_DATABASE in `.env` file to your own created database.
 
 3. After that, do these commands:
-   - In your terminal:
+   > In your terminal:
     ```bash
     php artisan migrate
     npm install
@@ -52,7 +52,7 @@ To run the system locally, do the following.
     ```
 
 4. To access the system, do the following commands.
-   - In your terminal:
+   > In your terminal:
     ```bash
     php artisan storage:link
     php artisan db:seed
