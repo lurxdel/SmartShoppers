@@ -33,7 +33,7 @@ To run the system locally, do the following.
 > - **Clone this repository** or download it as a **ZIP file.**
 > - When Cloning the repository, run these commands.
 
-1. First do the following command:
+1. First, do the following commands:
    - In your terminal:
     ```bash
     composer install
@@ -43,7 +43,7 @@ To run the system locally, do the following.
 
 2. Change the DATABASE in `.env` file to your own created database.
 
-3. After that, do the following command:
+3. After that, do these commands:
    - In your terminal:
     ```bash
     php artisan migrate
@@ -51,7 +51,7 @@ To run the system locally, do the following.
     npm run build
     ```
 
-4. To access the system, do the following
+4. To access the system, do the following commands.
    - In your terminal:
     ```bash
     php artisan storage:link
