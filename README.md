@@ -43,7 +43,7 @@ To run the system locally, do the following.
 
 2. Change the DATABASE in `.env` file to your own created database.
 
-3. After that, do following command:
+3. After that, do the following command:
    - In your terminal:
     ```bash
     php artisan migrate
